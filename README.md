@@ -1,236 +1,245 @@
-SkillPath — Job Readiness & Skill Assessment Platform
+# SkillPath — Job Readiness & Skill Assessment Platform
 
 SkillPath is a full-stack web application that helps users understand the skills required for different software roles, assess their current skill level through role-specific assessments, track assessment history, and calculate a job-match percentage based on assessment performance.
 
-🚀 Features
+## 🚀 Features
 
-Job discovery — Browse available roles and their required skills.
+- **Job Discovery** — Browse available software roles and their required skills.
+- **Role-Specific Assessments** — Each job generates a 20-question assessment using only the skills required for that role.
+- **Randomized Questions** — Questions and answer options are shuffled for every assessment attempt.
+- **Skill-Wise Performance** — View performance percentages for individual skills.
+- **Question Review** — Review incorrect answers along with the correct answer and skill.
+- **Job Readiness Level** — Results are classified as Excellent, Good, Average, or Needs Improvement.
+- **Assessment History** — Logged-in users can view previous assessment results.
+- **Job Match** — Calculate a weighted match percentage between assessment performance and job requirements.
+- **Authentication** — User registration and login using JWT authentication.
+- **Secure Password Storage** — Passwords are hashed using bcrypt.
+- **PostgreSQL Persistence** — User, job, skill, and assessment data are stored in PostgreSQL.
 
-Role-specific assessments — Each job generates a 20-question assessment using only the skills required for that role.
+---
 
-Randomized assessments — Questions and answer options are shuffled for each attempt.
+## 💼 Current Roles
 
-Skill-wise performance — View percentage performance for every assessed skill.
+| Role | Required Skills |
+|---|---|
+| Software Engineer | Java, SQL, PostgreSQL, Git, GitHub |
+| Data Analyst | Python, SQL, PostgreSQL, Git |
+| Backend Developer | Java, SQL, PostgreSQL, Git, GitHub |
+| Frontend Developer | HTML, CSS, JavaScript, Git, GitHub |
+| Machine Learning Engineer | Python, SQL, PostgreSQL, Git, GitHub |
 
-Question review — Review incorrect answers with the user's answer, correct answer, and skill.
+---
 
-Job readiness level — Results are classified as Excellent, Good, Average, or Needs Improvement.
+## 🎯 Job Match
 
-Assessment history — Logged-in users can view previously completed assessments.
-
-Job Match — Compare assessment performance with a job's required skills and calculate a weighted match percentage.
-
-Authentication — User registration and login using JWT authentication and bcrypt password hashing.
-
-PostgreSQL persistence — Users, jobs, skills, assessment results, and skill-level results are stored in PostgreSQL.
-
-💼 Current Roles
-
-Role
-
-Required Skills
-
-Software Engineer
-
-Java, SQL, PostgreSQL, Git, GitHub
-
-Data Analyst
-
-Python, SQL, PostgreSQL, Git
-
-Backend Developer
-
-Java, SQL, PostgreSQL, Git, GitHub
-
-Frontend Developer
-
-HTML, CSS, JavaScript, Git, GitHub
-
-Machine Learning Engineer
-
-Python, SQL, PostgreSQL, Git, GitHub
-
-🎯 How Job Match Works
-
-The Job Match feature uses the user's latest assessment for the selected job.
+SkillPath calculates an explainable job-match percentage based on the user's assessment performance.
 
 Each required skill has an importance level:
 
-High → weight 2
+- **High** → Weight 2
+- **Medium** → Weight 1
 
-Medium → weight 1
+A skill is considered a **strong skill** when the user's assessment performance is 70% or higher.
 
-A skill is considered strong when its assessment performance is 70% or higher.
+The Job Match result displays:
 
-The weighted skill performance is combined to produce the overall job-match percentage.
+- Overall Match Percentage
+- Strong Skills
+- Skills to Improve
+- Individual Skill Performance
 
-The result identifies:
+The current matching system is **rule-based and explainable**. It does not claim to use an AI recommendation model.
 
-Strong skills
+---
 
-Skills to improve
+## 📝 Assessment Workflow
 
-Skill-level performance
+```text
+                    ┌──────────────────┐
+                    │       User       │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │   Browse Jobs    │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    Select Job    │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Required Skills  │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Start Assessment │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ 20 Questions     │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │   Assessment Result  │
+                  └──────────┬───────────┘
+                             │
+                  ┌──────────┴──────────┐
+                  ▼                     ▼
+          ┌───────────────┐     ┌───────────────┐
+          │ Skill         │     │ Job Readiness │
+          │ Performance   │     │ Level         │
+          └───────┬───────┘     └───────┬───────┘
+                  │                     │
+                  └──────────┬──────────┘
+                             ▼
+                    ┌──────────────────┐
+                    │   Save Result    │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    Job Match     │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Assessment       │
+                    │ History          │
+                    └──────────────────┘
+```
 
-Overall match percentage
+---
 
-The matching mechanism is intentionally explainable and rule-based; it does not claim to use an AI recommendation model.
+## 🛠️ Technology Stack
 
-📝 Assessment Workflow
+### Frontend
 
-User
-  │
-  ▼
-Browse Jobs
-  │
-  ▼
-Select a Job
-  │
-  ▼
-View Required Skills
-  │
-  ▼
-Start Assessment
-  │
-  ▼
-20 Role-Specific Questions
-  │
-  ▼
-Submit Assessment
-  │
-  ├───────────────┐
-  ▼               ▼
-Skill          Job Readiness
-Performance        Level
-  │               │
-  └───────┬───────┘
-          ▼
-     Save Result
-          │
-          ▼
-      Job Match
-          │
-          ▼
- Assessment History
+- React
+- Vite
+- JavaScript
+- HTML5
+- CSS3
 
-🛠️ Technology Stack
+### Backend
 
-Frontend
+- Node.js
+- Express.js
+- REST APIs
+- JWT Authentication
+- bcrypt
 
-React
+### Database
 
-Vite
+- PostgreSQL
+- Node PostgreSQL (`pg`)
+- Relational Database Design
 
-JavaScript
+### Tools
 
-HTML5
+- Git
+- GitHub
+- VS Code
+- npm
 
-CSS3
+---
 
-Backend
+## 🏗️ System Architecture
 
-Node.js
+```text
+┌─────────────────────────────┐
+│       React + Vite          │
+│         Frontend            │
+│         Port 5173           │
+└──────────────┬──────────────┘
+               │
+               │ HTTP / REST API
+               ▼
+┌─────────────────────────────┐
+│      Node.js + Express      │
+│          Backend            │
+│         Port 5000           │
+└──────────────┬──────────────┘
+               │
+               │ SQL / pg
+               ▼
+┌─────────────────────────────┐
+│         PostgreSQL          │
+│        skillpath_db         │
+└─────────────────────────────┘
+```
 
-Express.js
+---
 
-REST APIs
+## 🗄️ Database Design
 
-JWT authentication
-
-bcrypt password hashing
-
-Database
-
-PostgreSQL
-
-pg Node.js PostgreSQL driver
-
-Relational database design
-
-Development Tools
-
-Git
-
-GitHub
-
-VS Code
-
-npm
-
-🏗️ System Architecture
-
-┌───────────────────────────┐
-│       React / Vite        │
-│       Frontend :5173      │
-└─────────────┬─────────────┘
-              │
-              │ HTTP / REST API
-              ▼
-┌───────────────────────────┐
-│      Node.js / Express    │
-│        Backend :5000      │
-└─────────────┬─────────────┘
-              │
-              │ SQL / pg
-              ▼
-┌───────────────────────────┐
-│        PostgreSQL         │
-│       skillpath_db        │
-└───────────────────────────┘
-
-🗄️ Database Design
-
-users
+### Users
 
 Stores registered user information.
 
+```text
 users
 ├── user_id
 ├── name
 ├── email
 ├── password_hash
 └── created_at
+```
 
-roles
+### Roles
 
-Stores role categories.
+Stores available role categories.
 
+```text
 roles
 ├── role_id
 └── role_name
+```
 
-skills
+### Skills
 
 Stores reusable skills.
 
+```text
 skills
 ├── skill_id
 └── skill_name
+```
 
-jobs
+### Jobs
 
-Stores jobs displayed by the application.
+Stores available jobs.
 
+```text
 jobs
 ├── job_id
 ├── role_id
 ├── title
 └── description
+```
 
-job_skills
+### Job Skills
 
-Maps jobs to required skills and their importance.
+Maps jobs to their required skills.
 
+```text
 job_skills
 ├── job_id
 ├── skill_id
 ├── importance
 └── source
+```
 
-assessment_results
+### Assessment Results
 
 Stores overall assessment results.
 
+```text
 assessment_results
 ├── result_id
 ├── user_id
@@ -240,11 +249,13 @@ assessment_results
 ├── readiness_level
 ├── skill_performance
 └── created_at
+```
 
-assessment_skill_results
+### Assessment Skill Results
 
-Stores performance for individual skills.
+Stores individual skill performance.
 
+```text
 assessment_skill_results
 ├── skill_result_id
 ├── result_id
@@ -253,101 +264,70 @@ assessment_skill_results
 ├── correct_answers
 ├── total_questions
 └── percentage
+```
 
-🔌 API Endpoints
+---
 
-Authentication
+## 🔌 API Endpoints
 
-Method
+### Authentication
 
-Endpoint
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login and receive JWT |
+| GET | `/api/auth/profile` | Get authenticated user profile |
 
-Purpose
+### Jobs
 
-POST
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/jobs` | Get available jobs and required skills |
+| GET | `/api/jobs/:jobId/match` | Calculate job match |
 
-/api/auth/register
+### Assessments
 
-Register a new user
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/assessments/results` | Save assessment result |
+| GET | `/api/assessments/history` | Get user's assessment history |
 
-POST
+Protected endpoints use:
 
-/api/auth/login
-
-Authenticate a user
-
-GET
-
-/api/auth/profile
-
-Get the authenticated user's profile
-
-Jobs
-
-Method
-
-Endpoint
-
-Purpose
-
-GET
-
-/api/jobs
-
-Get available jobs and required skills
-
-GET
-
-/api/jobs/:jobId/match
-
-Calculate the authenticated user's job match
-
-Assessments
-
-Method
-
-Endpoint
-
-Purpose
-
-POST
-
-/api/assessments/results
-
-Save an assessment result
-
-GET
-
-/api/assessments/history
-
-Get the authenticated user's assessment history
-
-Protected endpoints require:
-
+```text
 Authorization: Bearer <JWT_TOKEN>
+```
 
-📁 Project Structure
+---
 
+## 📁 Project Structure
+
+```text
 SKILLPATH/
 │
 ├── backend/
 │   ├── src/
 │   │   ├── config/
 │   │   │   └── db.js
+│   │   │
 │   │   ├── controllers/
 │   │   │   ├── assessmentController.js
 │   │   │   ├── authController.js
 │   │   │   └── jobController.js
+│   │   │
 │   │   ├── middleware/
 │   │   │   └── authMiddleware.js
+│   │   │
 │   │   ├── routes/
 │   │   │   ├── assessmentRoutes.js
 │   │   │   ├── authRoutes.js
 │   │   │   ├── healthRoutes.js
 │   │   │   ├── jobRoutes.js
 │   │   │   └── testRoutes.js
+│   │   │
 │   │   ├── app.js
 │   │   └── server.js
+│   │
 │   ├── .env
 │   └── package.json
 │
@@ -356,69 +336,92 @@ SKILLPATH/
 │   │   ├── App.jsx
 │   │   ├── App.css
 │   │   └── main.jsx
+│   │
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── .gitignore
 └── README.md
+```
 
-⚙️ Local Setup
+---
 
-1. Clone the repository
+## ⚙️ Local Setup
 
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/pallavi-karna/SKILLPATH.git
 cd SKILLPATH
+```
 
-2. Backend setup
+### 2. Backend Setup
 
+```bash
 cd backend
 npm install
+```
 
-Create a .env file inside backend/:
+Create a `.env` file inside the `backend` folder:
 
+```env
 DB_USER=your_postgresql_user
 DB_HOST=localhost
 DB_NAME=skillpath_db
 DB_PASSWORD=your_postgresql_password
 DB_PORT=5432
 JWT_SECRET=your_jwt_secret
+```
 
 Start the backend:
 
+```bash
 node src/server.js
+```
 
 Backend:
 
+```text
 http://localhost:5000
+```
 
-3. Frontend setup
+### 3. Frontend Setup
 
 Open another terminal:
 
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend:
 
+```text
 http://localhost:5173
+```
 
-🔐 Security
+---
 
-Passwords are hashed using bcrypt.
+## 🔐 Security
 
-Authenticated API requests use JWT.
+SkillPath implements basic application security practices:
 
-Database credentials and JWT secrets are stored in environment variables.
+- Password hashing using **bcrypt**
+- JWT-based authentication
+- Protected assessment APIs
+- Environment variables for database credentials
+- Environment variables for JWT secrets
+- `.env` excluded from Git
+- `node_modules` excluded from Git
 
-.env files are excluded from Git through .gitignore.
+For production deployment, secure secret management and production database credentials should be used.
 
-node_modules/ and build artifacts are excluded from Git.
+---
 
-For production deployment, use secure secret management and production database credentials.
+## 👤 Example User Flow
 
-👤 Example User Flow
-
+```text
 Register / Login
        │
        ▼
@@ -437,68 +440,65 @@ HTML • CSS • JavaScript • Git • GitHub
        ▼
 Assessment Result
        │
-       ├───────────────┐
-       ▼               ▼
-Skill Performance   Job Match
-       │               │
-       └───────┬───────┘
-               ▼
-       Assessment History
+       ├─────────────────┐
+       ▼                 ▼
+Skill Performance    Job Match
+       │                 │
+       └────────┬────────┘
+                ▼
+        Assessment History
+```
 
-💡 What This Project Demonstrates
+---
 
-React component-based UI development
+## 💡 What This Project Demonstrates
 
-REST API integration
+This project demonstrates practical experience with:
 
-Express.js backend development
+- React component-based UI development
+- REST API integration
+- Express.js backend development
+- PostgreSQL database integration
+- Relational database design
+- JWT authentication
+- bcrypt password hashing
+- Database transactions
+- Many-to-many job/skill relationships
+- Role-specific assessment generation
+- Skill-level analytics
+- Explainable weighted matching logic
+- Git and GitHub version control
 
-PostgreSQL relational data modeling
+---
 
-JWT-based authentication
+## 🔮 Future Enhancements
 
-bcrypt password hashing
+Potential future improvements include:
 
-Transaction-based assessment persistence
+- Resume parsing
+- Resume-to-job skill extraction
+- NLP-based skill extraction
+- Personalized learning recommendations
+- Larger assessment question banks
+- Admin dashboard
+- Job and skill management
+- Automated testing
+- CI/CD pipeline
+- Production deployment
+- Advanced progress analytics
 
-Many-to-many job/skill relationships
+> These are planned enhancements and are not currently implemented features.
 
-Role-specific assessment generation
+---
 
-Skill-level analytics
+## 🔗 GitHub Repository
 
-Explainable weighted matching logic
+[View SkillPath on GitHub](https://github.com/pallavi-karna/SKILLPATH)
 
-Git/GitHub version control
+---
 
-🔮 Future Enhancements
+## 👩‍💻 Author
 
-Potential future improvements:
-
-Resume parsing and resume-to-job skill extraction
-
-NLP-based skill extraction
-
-Personalized learning recommendations
-
-Larger question banks
-
-Admin dashboard for managing jobs, skills, and questions
-
-Production deployment
-
-Automated testing and CI/CD
-
-Advanced analytics and progress visualizations
-
-These are planned enhancements, not currently implemented features.
-
-🔗 Repository
-
-GitHub: github.com/pallavi-karna/SKILLPATH
-
-👩‍💻 Author
-
-Pallavi Karna
+**Pallavi Karna**
 
 B.Tech — Artificial Intelligence & Data Science
