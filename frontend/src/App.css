@@ -1,0 +1,1144 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f7fb;
+    color: #111;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    min-height: 100vh;
+    background: #f6f7fb;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 72px;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8ee;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #6547f5;
+    cursor: pointer;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-links button {
+    border: none;
+    background: transparent;
+    color: #333;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 7px;
+    transition: 0.2s ease;
+}
+
+.navbar-links button:hover {
+    background: #f1efff;
+    color: #6547f5;
+}
+
+.nav-auth-button {
+    border: 1px solid #6547f5 !important;
+    color: #6547f5 !important;
+}
+
+.nav-register-button {
+    background: #6547f5 !important;
+    color: white !important;
+}
+
+.nav-register-button:hover {
+    background: #5437df !important;
+    color: white !important;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.welcome-user {
+    font-size: 13px;
+    color: #444;
+}
+
+.nav-logout-button {
+    background: #111 !important;
+    color: white !important;
+}
+
+.nav-logout-button:hover {
+    background: #333 !important;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 560px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+.hero-label,
+.section-label,
+.modal-label,
+.result-label,
+.auth-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #6547f5;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(45px, 7vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -3px;
+    color: #161616;
+}
+
+.hero h1 span {
+    color: #6547f5;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 25px auto;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.primary-button {
+    border: none;
+    background: #6547f5;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.primary-button:hover {
+    background: #5437df;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   JOB SECTION
+========================= */
+
+.jobs-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 25px 120px;
+}
+
+.jobs-section > .section-label,
+.jobs-section > h2 {
+    text-align: center;
+}
+
+.jobs-section h2 {
+    font-size: 40px;
+    margin: 0 0 45px;
+    letter-spacing: -1px;
+}
+
+.loading-text,
+.error-text {
+    text-align: center;
+    padding: 30px;
+}
+
+.error-text {
+    color: #d93025;
+}
+
+.jobs-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+
+/* =========================
+   JOB CARD
+========================= */
+
+.job-card {
+    background: white;
+    border: 1px solid #e5e5eb;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.job-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.job-id {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+.job-role {
+    background: #eeeaff;
+    color: #6547f5;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.job-card h3 {
+    text-align: center;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.job-description {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.skills-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.skills-heading span {
+    color: #888;
+}
+
+.job-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #f7f7f9;
+    padding: 12px 14px;
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.importance-high {
+    color: #e53935;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.importance-medium {
+    color: #d89200;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.view-job-button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #111;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.view-job-button:hover {
+    background: #6547f5;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #171717;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    color: #aaa;
+    font-size: 12px;
+}
+
+
+/* =========================
+   GENERAL MODAL OVERLAY
+========================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.62);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-button {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+
+    border: none;
+    background: transparent;
+
+    color: #777;
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #111;
+}
+
+
+/* =========================
+   JOB MODAL
+========================= */
+
+.job-modal {
+    position: relative;
+
+    width: min(550px, 100%);
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 35px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.job-modal h2 {
+    margin: 0 0 15px;
+    font-size: 28px;
+}
+
+.modal-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+.job-modal h4 {
+    margin-top: 25px;
+}
+
+.modal-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.modal-skill {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 11px 13px;
+
+    background: #f7f7f9;
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.start-assessment-button {
+    width: 100%;
+    margin-top: 25px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #6547f5;
+    color: white;
+
+    font-weight: 700;
+}
+
+.start-assessment-button:hover {
+    background: #5437df;
+}
+
+
+/* =========================
+   ASSESSMENT MODAL
+========================= */
+
+.assessment-modal {
+    position: relative;
+
+    width: min(620px, 100%);
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 38px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.assessment-modal h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.assessment-info {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.progress-container {
+    margin: 25px 0;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 7px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #6547f5;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.question-skill {
+    display: inline-block;
+
+    background: #eeeaff;
+    color: #6547f5;
+
+    padding: 6px 10px;
+    border-radius: 15px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.question-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 10px 0 22px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    text-align: left;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: white;
+    color: #222;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.option:hover {
+    border-color: #6547f5;
+    background: #f8f6ff;
+}
+
+.option.selected {
+    border-color: #6547f5;
+    background: #eeeaff;
+    color: #6547f5;
+    font-weight: 700;
+}
+
+.assessment-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+.secondary-button {
+    padding: 12px 22px;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    background: white;
+    color: #333;
+
+    font-weight: 600;
+}
+
+.secondary-button:hover {
+    border-color: #6547f5;
+}
+
+.secondary-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.assessment-navigation .primary-button {
+    min-width: 150px;
+}
+
+
+/* =========================
+   RESULT MODAL
+========================= */
+
+.result-modal {
+    position: relative;
+
+    width: min(560px, 100%);
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.result-modal h2 {
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.result-label {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.score-circle {
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto 12px;
+
+    border: 6px solid #6547f5;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number {
+    font-size: 23px;
+    font-weight: 700;
+    color: #6547f5;
+}
+
+.score-label {
+    font-size: 9px;
+    color: #777;
+}
+
+.score-count {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+.readiness-box {
+    background: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.readiness-box h4 {
+    margin: 0 0 8px;
+}
+
+.readiness-box p {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.readiness-box strong {
+    font-size: 11px;
+}
+
+.performance-title {
+    margin: 20px 0 10px;
+}
+
+.performance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.performance-item {
+    background: #f7f7f7;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.performance-header {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.performance-bar {
+    height: 5px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.performance-fill {
+    height: 100%;
+    background: #6547f5;
+    border-radius: 10px;
+}
+
+.strong-skills {
+    margin-top: 15px;
+    padding: 12px;
+
+    background: #effaf2;
+    border: 1px solid #cdebd3;
+    border-radius: 7px;
+}
+
+.strong-skills h4 {
+    color: #218838;
+    margin: 0 0 5px;
+    font-size: 11px;
+}
+
+.strong-skills p {
+    margin: 0;
+    font-size: 10px;
+    color: #47704e;
+}
+
+.weak-skills {
+    margin-top: 10px;
+    padding: 12px;
+
+    background: #fff8eb;
+    border: 1px solid #f2d7a2;
+    border-radius: 7px;
+}
+
+.weak-skills h4 {
+    color: #b87500;
+    margin: 0 0 5px;
+    font-size: 11px;
+}
+
+.weak-skills p {
+    margin: 0;
+    font-size: 10px;
+    color: #87651f;
+}
+
+.retake-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #6547f5;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.back-jobs-button {
+    width: 100%;
+
+    margin-top: 7px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #111;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   AUTH OVERLAY
+========================= */
+
+.auth-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.62);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 2000;
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   AUTH MODAL
+========================= */
+
+.auth-modal {
+    position: relative;
+
+    width: min(440px, 100%);
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 38px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+
+    animation: authAppear 0.2s ease-out;
+}
+
+@keyframes authAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.auth-close {
+    position: absolute;
+
+    top: 14px;
+    right: 17px;
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    background: transparent;
+
+    color: #777;
+
+    font-size: 23px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.auth-close:hover {
+    color: #111;
+}
+
+.auth-logo {
+    color: #6547f5;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+.auth-label {
+    margin-bottom: 8px;
+}
+
+.auth-modal h2 {
+    margin: 0;
+
+    font-size: 27px;
+
+    letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+    margin: 10px 0 25px;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.auth-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-modal label {
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #333;
+
+    margin-bottom: 7px;
+}
+
+.auth-modal input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-bottom: 17px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    background: #fff;
+
+    color: #222;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.auth-modal input:focus {
+    border-color: #6547f5;
+
+    box-shadow: 0 0 0 3px rgba(101, 71, 245, 0.1);
+}
+
+.auth-modal input::placeholder {
+    color: #aaa;
+}
+
+.auth-submit {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #6547f5;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.auth-submit:hover {
+    background: #5437df;
+}
+
+.auth-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-error {
+    background: #fff0f0;
+
+    border: 1px solid #ffd0d0;
+
+    color: #c62828;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+.auth-success {
+    background: #effaf2;
+
+    border: 1px solid #ccebd3;
+
+    color: #218838;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+.auth-switch {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+.auth-switch button {
+    border: none;
+
+    background: transparent;
+
+    color: #6547f5;
+
+    font-weight: 700;
+
+    padding: 0;
+
+    font-size: 12px;
+}
+
+.auth-switch button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 18px;
+    }
+
+    .navbar-links {
+        gap: 3px;
+    }
+
+    .navbar-links button {
+        padding: 7px 6px;
+        font-size: 11px;
+    }
+
+    .welcome-user {
+        display: none;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+        letter-spacing: -2px;
+    }
+
+    .jobs-section {
+        padding: 60px 15px 80px;
+    }
+
+    .jobs-section h2 {
+        font-size: 32px;
+    }
+
+    .job-card {
+        padding: 20px;
+    }
+
+    .assessment-modal,
+    .result-modal,
+    .job-modal,
+    .auth-modal {
+        padding: 25px;
+    }
+
+    .assessment-navigation {
+        flex-direction: column;
+    }
+
+    .assessment-navigation button {
+        width: 100%;
+    }
+
+    .auth-modal {
+        width: 100%;
+    }
+}
