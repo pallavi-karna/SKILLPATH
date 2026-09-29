@@ -2,7 +2,9 @@
 
 SkillPath is a full-stack web application that helps users understand the skills required for different software roles, assess their current skill level through role-specific assessments, track assessment history, and calculate a job-match percentage based on assessment performance
 
+---
 🔗 Live Demo: https://skillpath-nu-two.vercel.app/
+---
 
 ## 🚀 Features
 
